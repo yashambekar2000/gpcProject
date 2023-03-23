@@ -29,7 +29,7 @@ $squalification = validate($_POST['qualification']);
 $sgender = validate($_POST['gender']);
 $sskills = validate($_POST['skills']);
 $smobile = $_POST['mobile'];
-$sresume = $_POST['resume'];
+
 
 if(empty($sname)) {
 
@@ -73,22 +73,54 @@ if(empty($sname)) {
 
 }else{
 
-    $sql = "INSERT INTO submitted_data (sname, saddress, scity, sstate, squalification, sgender, sskills, semail, smobile)
-    VALUES ('$sname', '$saddress', '$scity', '$sstate', '$squalification', '$sgender', '$sskills', '$semail', '$smobile')";
-    
-    if ($conn->query($sql) === TRUE) {
-      header("Location: index.php");
-      echo "New record created successfully";
-      exit();
-    } else {
-        header("Location: index.php?error=data didn't store");
 
-        exit();
-    }
-    
+    // **************Code for Upload the resume with form data to database ****************
+    if(isset($_POST["SubmitBtn"])){
+
+        $fileName=$_FILES["resume"]["name"];
+        $fileTmpName=$_FILES["resume"]["tmp_name"]; 
+        $fileSize=$_FILES["resume"]["size"]/1024;
+   // destination of the file on the server
+   $destination = 'resumes/' . $fileName;
+
+ 
+   $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+
+  
+
+   if (!in_array($extension, ['pdf'])) {
+    header("Location: index.php?error=file must be pdf..");
+   } elseif ($_FILES['resume']['size'] > 1000000) { 
+    header("Location: index.php?error=file to large");
+   } else {
       
+    // move the uploaded (temporary) file to the specified destination
+       if (move_uploaded_file($fileTmpName, $destination)) {
+        // header("Location: index.php?success=data submitted successfully");
+        $sql = "INSERT INTO submitted_data (sname, saddress, scity, sstate, squalification, sgender, sskills, semail, smobile, fname, fsize )
+  VALUES ('$sname', '$saddress', '$scity', '$sstate', '$squalification', '$sgender', '$sskills', '$semail', '$smobile', '$fileName', '$fileSize')";
+  
+  if ($conn->query($sql) === TRUE) {
+      
+      header("Location: index.php?success=data store successfully");
+   
+    exit();
+  } else {
+      header("Location: index.php?error=data didn't store");
 
-}
+      exit();
+  }
+       } else {
+           echo "Failed to upload file.";
+       }
+   }
+
+
+
+    }
+      
+}   
+
 
 
 

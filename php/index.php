@@ -1,5 +1,6 @@
 <?php
   include('sqlconn.php');
+//    include 'formdata.php';
   ?>
 
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
 </script>
 
 
-
+<!-- code to show error status -->
     <?php
   include('layouts/navbar.php');
   ?>
@@ -38,9 +39,20 @@
 <p class="error"><?php echo $_GET['error']; ?></p>
 
 <?php } ?>
+
+
+<!-- code to show success status -->
+<?php if (isset($_GET['success'])) { ?>
+
+<p class="success"><?php echo $_GET['success']; ?></p>
+
+<?php } ?>
+
+
+
 <div class="mainformdiv">
 <h2 class="formheading">Submission Form</h2>
-<form class="subform" action="formdata.php" method="POST">
+<form class="subform" action="formdata.php" method="POST" enctype="multipart/form-data">
     
     <label for="name">Enter a Name &nbsp&nbsp&nbsp&nbsp&nbsp </label>
     <input class="inputs" name="name" type="text" min="3">
@@ -58,7 +70,7 @@
     <input class="inputs" name="email" type="email">
 <br><br>
     <label for="mobile">Mobile Number &nbsp&nbsp&nbsp&nbsp </label>
-    <input class="inputs" name="mobile" type="number">
+    <input class="inputs" name="mobile" type="tel">
 <br><br>
     <label for="qualification">Qualification &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
     <input class="inputs" name="qualification" type="text">
@@ -74,9 +86,10 @@
     <input class="inputs" name="skills" type="text">
 <br><br>
     <label for="resume">Resume &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  </label>
-    <input class="inputs resume" name="resume" type="file">
+    <input type="file" class="inputs resume" name="resume" id="resume">
 <br><br>
-<button class="submitformbtn" >Submit</button>
+
+<input type="submit" class="submitformbtn" name="SubmitBtn" id="SubmitBtn" value="Submit">
 </form>
 </div>
 </body>

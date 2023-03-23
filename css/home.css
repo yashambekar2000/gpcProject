@@ -16,6 +16,13 @@
 
 }
 
+.homeheading{
+    margin-top: 4px;
+    margin-left: 15px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
 .logoutbtndiv{
     margin-left: 84%;
     margin-top: 7px;
