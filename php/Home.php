@@ -19,7 +19,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 </head>
 <body>
 <nav class="homenavbardiv">
-<h2 class="homeheading">Home </h2>
+
     <div class="logoutbtndiv"><a type="btn" class="logoutbtn" href="logout.php">Admin LogOut</a></div>
 
 
