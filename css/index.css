@@ -1,0 +1,61 @@
+.mainformdiv{
+    height: 730px;
+    width: 45%;
+    margin-left: 25%;
+    margin-top: 150px;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.formheading{
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(45, 131, 230);
+}
+.subform{
+    margin-left: 50px;
+    margin-top: 20px;
+    text-align: left;
+    width: 90%;
+}
+
+.inputs{
+    height: 30px;
+    width: 200px;
+    /* border: 1px solid black; */
+    /* border-radius: 10px; */
+
+}
+.gender{
+   width: 173px; 
+}
+
+label{
+    text-align: right;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.resume{
+    width: 173px; 
+}
+
+.submitformbtn{
+    margin-left: 150px;
+    height: 30px;
+    width: 140px;
+    font-size: 17px;
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+.error {
+    background: #F2DEDE;
+    color: #b61616;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+    margin: 20px auto;
+ }
